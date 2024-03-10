@@ -22,27 +22,27 @@
 </head>
 <body
     class="font-sans antialiased"
-    x-data="{ darkMode: null}"
-    x-init="
-let darkMode = localStorage.getItem('darkMode'); // Get the value without parsing
-if (darkMode) {
-  try {
-    darkMode = JSON.parse(darkMode); // Parse only if a value exists
-  } catch (error) {
-    // Handle potential parsing errors (optional)
-    console.error('Error parsing darkMode:', error);
-    darkMode = false; // Set default if parsing fails
-  }
-} else {
-  darkMode = false; // Set default if no value exists
-}
-    if (darkMode) {
-        document.body.classList.add('dark');
-    } else {
-        document.body.classList.remove('dark');
-    }
-    $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))
-    $watch('darkMode', value => console.log(value));"
+    {{--    x-data="{ darkMode: null}"--}}
+    {{--    x-init="--}}
+    {{--let darkMode = localStorage.getItem('darkMode'); // Get the value without parsing--}}
+    {{--if (darkMode) {--}}
+    {{--  try {--}}
+    {{--    darkMode = JSON.parse(darkMode); // Parse only if a value exists--}}
+    {{--  } catch (error) {--}}
+    {{--    // Handle potential parsing errors (optional)--}}
+    {{--    console.error('Error parsing darkMode:', error);--}}
+    {{--    darkMode = false; // Set default if parsing fails--}}
+    {{--  }--}}
+    {{--} else {--}}
+    {{--  darkMode = false; // Set default if no value exists--}}
+    {{--}--}}
+    {{--    if (darkMode) {--}}
+    {{--        document.body.classList.add('dark');--}}
+    {{--    } else {--}}
+    {{--        document.body.classList.remove('dark');--}}
+    {{--    }--}}
+    {{--    $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))--}}
+    {{--    $watch('darkMode', value => console.log(value));"--}}
     {{--    x-cloak--}}
 
 >
