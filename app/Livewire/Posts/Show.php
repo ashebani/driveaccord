@@ -119,6 +119,8 @@ class Show extends Component
     {
         $comments = $this->post->comments()->with(
             'comments',
+            'commentable',
+            'likes',
             'comments.user',
             'bookmarks',
             'user',

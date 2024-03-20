@@ -68,9 +68,14 @@
     <x-panel class="mt-4 text-gray-900 dark:text-gray-100 space-y-4">
 
         @forelse($posts as $post)
-            <livewire:components.main-post-card
-                :post="$post"
-                wire:key="{{$post->id}}"/>
+            <div
+                wire:key="{{$post->id}}"
+            >
+
+                <x-posts.main-post-card
+                    :post="$post"
+                />
+            </div>
         @empty
             {{ __("No posts here yet.") }}
         @endforelse

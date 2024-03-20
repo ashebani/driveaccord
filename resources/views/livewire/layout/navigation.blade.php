@@ -29,7 +29,8 @@ new class extends Component {
                 <div class="shrink-0 flex items-center">
                     <a
                         href="/"
-                        wire:navigate>
+                        {{--                        wire:navigate--}}
+                    >
                         {{--                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>--}}
 
                         <img
@@ -47,7 +48,8 @@ new class extends Component {
                     <x-nav-link
                         :href="route('dashboard')"
                         :active="request()->routeIs('dashboard')"
-                        wire:navigate>
+                        {{--                        wire:navigate--}}
+                    >
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
@@ -55,7 +57,8 @@ new class extends Component {
                     <x-nav-link
                         :href="route('categories.index')"
                         :active="request()->routeIs('categories.index')"
-                        wire:navigate>
+                        {{--                        wire:navigate--}}
+                    >
                         {{ __('Makes') }}
                     </x-nav-link>
                 </div>
@@ -64,8 +67,9 @@ new class extends Component {
                     <x-nav-link
                         :href="route('posts.index')"
                         :active="request()->routeIs('posts.index')"
-                        wire:navigate>
-                        {{ __('Posts') }}
+                        {{--                        wire:navigate--}}
+                    >
+                        {{ __('All Posts') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -146,7 +150,8 @@ new class extends Component {
                             <x-slot name="content">
                                 <x-dropdown-link
                                     :href="route('profile')"
-                                    wire:navigate>
+                                    {{--                                    wire:navigate--}}
+                                >
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
                                 @if(auth()->user()->email === 'a@a.com')
@@ -207,20 +212,23 @@ new class extends Component {
             <x-responsive-nav-link
                 :href="route('dashboard')"
                 :active="request()->routeIs('dashboard')"
-                wire:navigate>
+                {{--                wire:navigate--}}
+            >
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link
                 :href="route('categories.index')"
                 :active="request()->routeIs('categories.index')"
-                wire:navigate>
+                {{--                wire:navigate--}}
+            >
                 {{ __('Makes') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link
                 :href="route('posts.index')"
                 :active="request()->routeIs('posts.index')"
-                wire:navigate>
-                {{ __('Posts') }}
+                {{--                wire:navigate--}}
+            >
+                {{ __('All Posts') }}
             </x-responsive-nav-link>
         </div>
 
@@ -240,7 +248,8 @@ new class extends Component {
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link
                         :href="route('profile')"
-                        wire:navigate>
+                        {{--                        wire:navigate--}}
+                    >
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 

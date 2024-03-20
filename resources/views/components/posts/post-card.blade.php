@@ -1,38 +1,26 @@
 @props(['post'])
 <x-card-panel
-    wire:key="{{$post->id}}"
+    x-cloak
     class="{{$post->solution_comment_id ? 'border-green-700 dark:border-green-700 dark:border-2' : ''}}">
-
-    <div class=" p-4 pt-5 md:p-6">
+    <div class="p-4 pt-5 sm:p-4">
         <div class="flex justify-between items-start gap-4">
-
-
             <div class="flex items-start gap-4">
-
-                <img
-                    class="h-14 w-14"
-                    src="{{$post->user->image_url}}"
-                    alt="">
-
                 <div>
-                    <h3 class="font-medium sm:text-lg">
+                    <h3 class="font-medium text-sm sm:text-lg lg:text-xl overflow-x-hidden text-ellipsis ">
                         <a
-                            {{--                                                wire:navigate--}}
+                            wire:navigate
                             href="/posts/{{$post->id}}"
-                            class="hover:underline">{{$post->title}}
+                            class="hover:underline ">{{$post->title}}
                         </a>
                     </h3>
 
-                    <p class="line-clamp-2 text-sm text-gray-700 dark:text-gray-300">
-                        {!!  strip_tags($post->description) !!}
-                    </p>
 
                     <div class="mt-2 sm:flex sm:items-center sm:gap-2">
-                        <p class="hidden sm:block sm:text-xs sm:text-gray-500 dark:text-gray-400">
-                            Posted by
+                        <p class="hidden sm:block sm:text-xs desc-text">
+                            {{__("Posted By")}}
                             <a
-                                href="{{$post->user->route()}}"
-                                class="font-medium underline hover:text-gray-700 ">{{$post->user->name}}
+                                href="/users/{{$post->id_of_user}}"
+                                class="font-medium underline hover:text-gray-700 ">{{$post->user_name}}
                             </a>
                         </p>
                         <span
@@ -54,9 +42,12 @@
                                 />
                             </svg>
 
-                            <p class="text-xs dark:text-gray-400">{{$post->comments_count . ' ' . Str::plural('Comment', $post->comments_count)}}</p>
+                            <p class="text-xs desc-text">
+                                {{$post->comments_count . ' '}}
+                                {{ app()->getLocale() === 'ar' ? ($post->comments_count <= 10 && $post->comments_count > 1 ? __('Comments') : __('Comment') ) : __(Str::plural(__('Comment'), $post->comments_count)) }}
+                            </p>
                         </div>
-                        <div class="flex items-center gap-1 text-gray-500 dark:text-gray-400">
+                        <div class="flex items-center gap-1 justify-start text-gray-500 dark:text-gray-400">
                             <svg
                                 width="1.5em"
                                 height="1.5em"
@@ -71,12 +62,16 @@
                             </svg>
 
 
-                            <p class="text-xs dark:text-gray-400">{{$post->contributions_count . ' ' . Str::plural('Contribution', $post->contributions_count)}}</p>
+                            <p class="text-xs desc-text">
+                                {{$post->contributions_count . ' '}}
+                                {{ app()->getLocale() === 'ar' ? ($post->contributions_count <= 10 && $post->contributions_count > 1 ? __('Contributions') : __('Contribution') ) : __(Str::plural(__('Contribution'), $post->contributions_count)) }}
+                            </p>
                             <span
                                 class="hidden sm:block"
-                                aria-hidden="true">&middot;</span>
-                            <p class="text-xs dark:text-gray-400 ">{{$post->created_at->diffForHumans()}}</p>
-
+                                aria-hidden="true">
+                                    &middot;
+                                </span>
+                            <p class="text-xs text-right justify-self-end desc-text">{{$post->created_at->diffForHumans()}}</p>
                         </div>
 
 
@@ -85,45 +80,16 @@
 
             </div>
 
-            <div class="text-right flex gap-2 justify-end">
 
-                <div class="flex space-x-1 bg-white dark:bg-transparent items-center p-1 rounded">
-
-                    <!-- Bookmark Button -->
-                    <x-bookmark :model="$post"/>
-                </div>
-
+            <div class="flex space-x-1 bg-white dark:bg-transparent items-center p-1 rounded">
+                <!-- Bookmark Button -->
+                <x-bookmark :model="$post"/>
 
             </div>
+
+
         </div>
     </div>
 
-    {{--Solved Tag--}}
-    @if($post->solution_comment_id)
-
-        <div class="flex justify-end">
-            <strong
-                class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                </svg>
-
-                <span class="text-[10px] font-medium sm:text-xs">Solved!</span>
-            </strong>
-        </div>
-
-    @endif
-
 </x-card-panel>
+

@@ -80,7 +80,7 @@ new class extends Component {
     class="w-full space-y-4">
     @forelse($savedPosts as $post)
 
-        <livewire:components.post-card
+        <x-posts.post-card
             :post="$post"
             wire:key="{{$post->id}}"
         />

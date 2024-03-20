@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+Route::get('/language/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+} );
+
 Route::get('dashboard', \App\Livewire\Dashboard\Index::class)->name('dashboard');
 
 Route::get('posts', \App\Livewire\Posts\Index::class)->name('posts.index');

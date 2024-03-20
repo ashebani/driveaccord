@@ -16,7 +16,10 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env(
+        'APP_NAME',
+        'Laravel'
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +32,10 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env(
+        'APP_ENV',
+        'production'
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +48,10 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env(
+        'APP_DEBUG',
+        false
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +64,10 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env(
+        'APP_URL',
+        'http://localhost'
+    ),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -83,7 +95,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,8 +195,7 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+    'aliases' => Facade::defaultAliases()->merge([// 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
 ];

@@ -1,47 +1,4 @@
-<?php
-
-use App\Models\Post;
-use Livewire\Volt\Component;
-use function Livewire\Volt\
-{state
-};
-
-new Class extends Component {
-    public $post;
-
-    public function bookmark(Post $post)
-    {
-        abort_if(
-            ! auth()->check(),
-            '404'
-        );
-
-        if (
-
-            $post->bookmarks->contains(
-                'user_id',
-                auth()->id()
-            ))
-        {
-            return $post->bookmarks()->where(
-                'user_id',
-                auth()->id()
-            )->delete();
-
-        }
-        else
-        {
-            return $post->bookmarks()->create(['user_id' => auth()->id()]);
-        }
-
-    }
-
-}
-
-//
-
-?>
-
+@props(['post'])
 <x-card-panel
     class="{{$post->solution_comment_id ? 'border-green-700 dark:border-green-700 dark:border-2' : ''}}">
 
@@ -71,7 +28,7 @@ new Class extends Component {
 
                     <div class="mt-2 sm:flex sm:items-center sm:gap-2">
                         <p class="hidden sm:block sm:text-xs desc-text">
-                            Posted by
+                            {{__("Posted By")}}
                             <a
                                 href="{{$post->user->route()}}"
                                 class="font-medium underline hover:text-gray-700 ">{{$post->user->name}}
@@ -96,7 +53,10 @@ new Class extends Component {
                                 />
                             </svg>
 
-                            <p class="text-xs desc-text">{{$post->comments_count . ' ' . Str::plural('Comment', $post->comments_count)}}</p>
+                            <p class="text-xs desc-text">
+                                {{$post->comments_count . ' '}}
+                                {{ app()->getLocale() === 'ar' ? ($post->comments_count <= 10 && $post->comments_count > 1 ? __('Comments') : __('Comment') ) : __(Str::plural(__('Comment'), $post->comments_count)) }}
+                            </p>
                         </div>
                         <div class="flex items-center gap-1 text-gray-500 dark:text-gray-400">
                             <svg
@@ -113,7 +73,11 @@ new Class extends Component {
                             </svg>
 
 
-                            <p class="text-xs desc-text">{{$post->contributions_count . ' ' . Str::plural('Contribution', $post->contributions_count)}}</p>
+                            <p class="text-xs desc-text">
+                                {{$post->contributions_count . ' '}}
+                                {{ app()->getLocale() === 'ar' ? ($post->contributions_count <= 10 && $post->contributions_count > 1 ? __('Contributions') : __('Contribution') ) : __(Str::plural(__('Contribution'), $post->contributions_count)) }}
+
+                            </p>
                             <span
                                 class="hidden sm:block"
                                 aria-hidden="true">&middot;</span>
@@ -162,7 +126,7 @@ new Class extends Component {
                     />
                 </svg>
 
-                <span class="text-[10px] font-medium sm:text-xs">Solved!</span>
+                <span class="text-[10px] font-medium sm:text-xs">{{__("Solved")}}!</span>
             </strong>
         </div>
 

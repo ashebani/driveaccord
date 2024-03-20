@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html
-    lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    {{app()->getLocale() === 'ar' ?     "dir=rtl"
+ : ''
+    }}
+>
 <head>
     <meta
         name="csrf-token"
@@ -69,5 +73,6 @@
         {{ $slot }}
     </main>
 </div>
+<x-footer/>
 </body>
 </html>

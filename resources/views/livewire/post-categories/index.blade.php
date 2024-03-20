@@ -9,11 +9,11 @@
                     <div class="grid sm:flex sm:justify-between w-full items-center gap-4">
                         <a
                             wire:navigate
-                            class="md:mr-10"
+                            class="md:mr-10 rtl:md:mr-0 rtl:sm:text-right "
                             href="/makes/{{$category->id}}">
                             <div>
-                                <h3 class="text-lg text-center sm:text-left font-bold lg:text-xl ">{{$category->name}}</h3>
-                                <p class="text-md text-center sm:text-left">{{$category->description}}</p>
+                                <h3 class="text-lg text-center sm:text-left rtl:sm:text-right font-bold lg:text-xl ">{{$category->name}}</h3>
+                                <p class="text-md text-center sm:text-left rtl:sm:text-right">{{__($category->description)}}</p>
                             </div>
                         </a>
                         <div class="grid md:flex md:justify-start items-center space-y-2 md:space-y-0 md:space-x-8">

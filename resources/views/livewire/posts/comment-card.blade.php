@@ -214,12 +214,12 @@ new class extends Component {
                                 class="h-12 w-12"/>
 
                         </div>
-                        <div class="">
+                        <div>
                             <a
                                 href="{{$commentOfComment->user->route()}}"
                                 class="flex items-center gap-2">
                                 <h3 class="text-sm font-semibold">{{$commentOfComment->user->name}}</h3>
-                                @if($commentOfComment->user->name === $commentOfComment->commentable->user->name)
+                                @if($commentOfComment->user->name === $comment->commentable->user->name)
                                     <span class="p-1 bg-primary rounded-full h-2.5 w-2.5"></span>
                                 @endif
                             </a>
@@ -235,6 +235,8 @@ new class extends Component {
             </x-card-panel>
         @endforeach
     </div>
+
+    {{--    Reply Form   --}}
     <div
         class="ml-12 sm:ml-16 md:ml-32 mt-4"
         x-show="isOpen"
@@ -267,6 +269,4 @@ new class extends Component {
             </form>
         @endauth
     </div>
-
-
 </div>

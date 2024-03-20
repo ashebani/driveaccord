@@ -11,24 +11,24 @@
                 class="grid"
                 x-data="{ tab: window.location.hash ? window.location.hash : '#account' }">
 
-                <div class="mb-4 flex space-x-4 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md max-w-lg w-full justify-self-center">
+                <div class="mb-4 flex gap-4 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md max-w-lg w-full justify-self-center">
                     <button
                         @click="tab = '#account'"
                         :class="{ 'bg-primary dark:bg-primary-700 text-gray-800 dark:text-white ': tab === '#account' }"
                         class="flex-1 py-2 px-4 rounded-md dark:text-gray-400 focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-                        Account
+                        {{__("Account")}}
                     </button>
                     <button
                         @click="tab = '#my-posts'"
                         :class="{ 'bg-primary dark:bg-primary-700 text-gray-800 dark:text-white ': tab === '#my-posts' }"
                         class="flex-1 py-2 px-4 rounded-md dark:text-gray-400 focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-                        My Posts
+                        {{__("My Posts")}}
                     </button>
                     <button
                         @click="tab = '#saved-posts'"
                         :class="{ 'bg-primary dark:bg-primary-700 text-gray-800 dark:text-white ': tab === '#saved-posts' }"
                         class="flex-1 py-2 px-4 rounded-md dark:text-gray-400 focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-                        Saved Posts
+                        {{__("Saved Posts")}}
                     </button>
                 </div>
 
@@ -82,7 +82,6 @@
 
 
             </div>
-
         </div>
     </div>
 </x-app-layout>

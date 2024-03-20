@@ -113,7 +113,6 @@
                         :comment="$comment"/>
                 @empty
                 @endforelse
-
                 @auth
                     {{--    TODO: check message wire:model if it intercects with the reply one  --}}
                     <form
@@ -138,7 +137,13 @@
                                 :messages="$errors->get('comment')"
                                 class="mt-2"/>
                         </div>
-                        <x-primary-button>Add</x-primary-button>
+
+                        <x-primary-button
+                            class="disabled:opacity-25"
+                            wire:loading.attr="disabled">
+                            <span wire:loading>Loading...</span>
+                            <span wire:loading.remove>Add</span>
+                        </x-primary-button>
                     </form>
                 @endauth
                 {{$comments->links()}}

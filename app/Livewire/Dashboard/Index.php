@@ -93,15 +93,34 @@ class Index extends Component
 
         return view(
             'livewire.dashboard.index',
-        //            [
-        //                'latestPosts'      => $latestPosts,
-        //                'mostActivePosts'  => $mostActivePosts,
-        //                'mostHelpfulPosts' => $mostActivePosts,
-        //                'latestPosts'      => $latestPosts,
-        //                'mostActivePosts'  => $latestPosts,
-        //                'mostHelpfulPosts'  => $mostHelpfulPosts,
-        //            ]
         );
+    }
+
+    public function bookmark(Post $post)
+    {
+        abort_if(
+            ! auth()->check(),
+            '404'
+        );
+
+        if (
+
+            $post->bookmarks->contains(
+                'user_id',
+                auth()->id()
+            ))
+        {
+            return $post->bookmarks()->where(
+                'user_id',
+                auth()->id()
+            )->delete();
+
+        }
+        else
+        {
+            return $post->bookmarks()->create(['user_id' => auth()->id()]);
+        }
+
     }
 
 }
